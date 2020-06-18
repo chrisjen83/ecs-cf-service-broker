@@ -96,3 +96,4 @@ manifest.yml
 !wiremock.pem
 
 out
+.deploy
