@@ -1,0 +1,5 @@
+# You can use multiple profiles to easily configure for test and production.
+# Copy this file to `<project root>/src/main/resources/application.yaml`.
+---
+spring:
+  profiles: cloud

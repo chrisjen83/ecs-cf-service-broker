@@ -1,0 +1,179 @@
+---
+spring:
+  profiles:
+    active: test
+security:
+  user:
+    password: password
+broker:
+  certificate: |
+    -----BEGIN CERTIFICATE-----
+    MIIDgzCCAmugAwIBAgIEHYkuTzANBgkqhkiG9w0BAQsFADBxMRAwDgYDVQQGEwdV
+    bmtub3duMRAwDgYDVQQIEwdVbmtub3duMRAwDgYDVQQHEwdVbmtub3duMRAwDgYD
+    VQQKEwdVbmtub3duMRAwDgYDVQQLEwdVbmtub3duMRUwEwYDVQQDEwxUb20gQWtl
+    aHVyc3QwIBcNMTUwMjI0MTM1ODUwWhgPMjExNTAxMzExMzU4NTBaMHExEDAOBgNV
+    BAYTB1Vua25vd24xEDAOBgNVBAgTB1Vua25vd24xEDAOBgNVBAcTB1Vua25vd24x
+    EDAOBgNVBAoTB1Vua25vd24xEDAOBgNVBAsTB1Vua25vd24xFTATBgNVBAMTDFRv
+    bSBBa2VodXJzdDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAIAIvMUo
+    vy4ufnWKxMU0tBdXqtX6RzKYgQvj/82qPAmRiNki8PpPGrF70Lb3WzsUDYB9CsXw
+    m5VWc9l1XBdGh6zZVFkkSzBtRjyHy8Z8azsIv/YzQF5bRxE2Cvruh7o01Sq1qz5B
+    kxt0u/NbUUErxKZeA0li1W/op7RC94h0dzob7auruHUvb56NXAJZcu8r2G9jxh9w
+    WBPC6lSozuCzwfdS4v2ZOQBYpmMz9oJm3ElQUbOrhnVQtgxQicU2oDETwz37IIEw
+    FV12la+qNIMSOTe6uJj1jEZP22NL2IYq06BT/ZnK6HYIOXAtwURSsf0MN0b8NKBB
+    NOLQN2juRj+vn6UCAwEAAaMhMB8wHQYDVR0OBBYEFDZ6soXRxD/N2n5b++CVrWbr
+    XLKWMA0GCSqGSIb3DQEBCwUAA4IBAQBiPfCUg7EHz8poRgZL60PzMdyaKLwafGtF
+    dshmY1y9vzpPJIoFcIH7crSsmUcRk+XSj5WhSr4RT3y15JsfZy935057f0knEXEf
+    or+Gi8BlDaC33qX+6twiAaub1inEDc028ZFtEwbzJQYgJo1GvLG2o2BMZB1C5F+k
+    Nm9jawu4rTNtXktXloNhoxrSWtyEUoDAvGgBVnAJwQXcfayWq3AsCr9kpHI3bBwL
+    J9NAGC4M8j7z9Aw71JGmwBDk1ooAO6L82W7DWBYPzpLXXeXmHRCxpujKWaveAV2T
+    cgsQaCmzy29i+F03pLl7Vio4Ei+z9XQgZiN4Awiwz9D+lshnKuII
+    -----END CERTIFICATE-----
+  namespace: ns1
+  replication-group: rg1
+  management-endpoint: https://127.0.0.1:4443
+  object-endpoint: http://127.0.0.1:9020
+  repository-service-id: f3cbab6a-5172-4ff1-a5c7-72990f0ce2aa
+  repository-plan-id: 89d20694-9ab0-4a98-bc6a-868d6d4ecf31
+catalog:
+  services:
+    - id: 09cac1c6-1b0a-11e6-b6ba-3e1d05defe78
+      name: ecs-namespace
+      description: Elastic Cloud Namespace
+      bindable: true
+      plan-updatable: true
+      tags:
+        - s3
+        - namespace
+      service-settings:
+        service-type: namespace
+      metadata:
+        displayName: ecs-namespace
+        imageUrl: http://www.emc.com/images/products/header-image-icon-ecs.png
+        longDescription: Dell EMC Elastic Cloud Storage (ECS) Namespace for managing Amazon S3, Swift or Atmos buckets.
+        providerDisplayName: Dell EMC
+        documentationUrl: https://community.emc.com/docs/DOC-45012
+        supportUrl: http://www.emc.com/products-solutions/trial-software-download/ecs.htm
+      plans:
+        - id: 09cac5b8-1b0a-11e6-b6ba-3e1d05defe78
+          name: 5gb
+          description: Free Trial
+          service-settings:
+            quota:
+              limit: 5
+              warn: 4
+          metadata:
+            costs:
+              - amount:
+                  usd: 5.0
+                unit: MONTHLY
+            bullets:
+              - Multiple Bucket Namespace
+              - 5 GB Storage
+              - S3 protocol and HDFS access
+    - id: f3cbab6a-5172-4ff1-a5c7-72990f0ce2aa
+      name: ecs-bucket
+      type: bucket
+      description: Elastic Cloud S3 Object Storage Bucket
+      bindable: true
+      plan-updatable: true
+      tags:
+        - s3
+        - bucket
+      service-settings:
+        service-type: bucket
+        head-type: s3
+        access-during-outage: true
+      metadata:
+        displayName: ecs-bucket
+        imageUrl: http://www.emc.com/images/products/header-image-icon-ecs.png
+        longDescription: Dell EMC Elastic Cloud Storage (ECS) Object bucket for storing data using Amazon S3.
+        providerDisplayName: Dell EMC
+        documentationUrl: https://community.emc.com/docs/DOC-45012
+        supportUrl: http://www.emc.com/products-solutions/trial-software-download/ecs.htm
+      plans:
+        - id: 8e777d49-0a78-4cf4-810a-b5f5173b019d
+          name: 5gb
+          description: Free Trial
+          service-settings:
+            quota:
+              limit: 5
+              warn: 4
+          free: true
+          metadata:
+            costs:
+              - amount:
+                  usd: 0.0
+                unit: MONTHLY
+            bullets:
+              - Shared object storage
+              - 5 GB Storage
+              - S3 protocol access
+        - id: 89d20694-9ab0-4a98-bc6a-868d6d4ecf31
+          name: unlimited
+          description: Pay per GB for Month
+          metadata:
+            costs:
+              - amount:
+                  usd: 0.03
+                unit: PER GB PER MONTH
+            bullets:
+              - Shared object storage
+              - Unlimited Storage
+              - S3 protocol access
+    - id: 9052313c-20b2-47de-900f-6e8b04fafcca
+      name: ecs-file-bucket
+      type: bucket
+      description: Elastic Cloud S3 Object Storage File Accessible Bucket
+      bindable: true
+      plan-updatable: true
+      tags:
+        - s3
+        - bucket
+        - nfs
+        - hdfs
+      requires:
+        - volume_mount
+      service-settings:
+        service-type: bucket
+        head-type: s3
+        access-during-outage: true
+        file-accessible: true
+      metadata:
+        displayName: ecs-bucket
+        imageUrl: http://www.emc.com/images/products/header-image-icon-ecs.png
+        longDescription: Dell EMC Elastic Cloud Storage (ECS) Object bucket for storing data using Amazon S3 or NFS.
+        providerDisplayName: Dell EMC
+        documentationUrl: https://community.emc.com/docs/DOC-45012
+        supportUrl: http://www.emc.com/products-solutions/trial-software-download/ecs.htm
+      plans:
+        - id: 8e777d49-0a78-4cf4-810a-b5f5173b019d
+          name: 5gb
+          description: Free Trial
+          service-settings:
+            quota:
+              limit: 5
+              warn: 4
+          free: true
+          metadata:
+            costs:
+              - amount:
+                  usd: 0.0
+                unit: MONTHLY
+            bullets:
+              - Shared object storage
+              - 5 GB Storage
+              - S3 protocol access
+              - NFS protocol access
+        - id: 89d20694-9ab0-4a98-bc6a-868d6d4ecf31
+          name: unlimited
+          description: Pay per GB for Month
+          metadata:
+            costs:
+              - amount:
+                  usd: 0.03
+                unit: PER GB PER MONTH
+            bullets:
+              - Shared object storage
+              - Unlimited Storage
+              - S3 protocol access
+              - NFS protocol access

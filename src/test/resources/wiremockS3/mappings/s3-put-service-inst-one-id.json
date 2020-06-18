@@ -1,0 +1,30 @@
+{
+	"scenarioName": "service-inst-one-id",
+	"requiredScenarioState": "Started",
+	"newScenarioState": "Created",
+    "request": {
+        "method": "PUT",
+        "url": "/ecs-cf-broker-repository/service-instance/service-instance-id.json",
+        "headers": {
+        	"Content-Type": {
+        		"equalTo": "application/octet-stream"
+        	},
+        	"Authorization" : {
+        		"matches": "AWS ecs-cf-broker-user:.*"
+        	}
+        },
+        "bodyPatterns": [
+        	{
+              "equalToJson": "{\"references\":[\"service-instance-id\"],\"service_instance_id\":\"service-instance-id\",\"service_id\":\"service-one-id\",\"plan_id\":\"plan-one-id\",\"remote_connect_keys\":{},\"name\":\"service-instance-id\"}"
+        	}
+        ]
+    },
+    "response": {
+        "status": "200",
+        "headers": {
+			"x-amz-request-id": "0a05881f:150a5d74db8:1b1f:f",
+			"x-amz-id-2": "fcff654eb2d4b131db75376eb1fde702bf1e738f48c59bfa1093302d2625ee82",
+			"x-emc-mtime": "1450675315169"
+		}
+    }
+}
