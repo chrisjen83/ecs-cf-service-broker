@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  ecs-service-broker:
+  - apiVersion: v1
+    appVersion: 2.0.0
+    created: "2020-06-18T15:35:54.552893+10:00"
+    description: ECS Service Broker Helm chart for Kubernetes
+    digest: 1e50b2955476414dbf7fe368eabb7a8662d0cdb337a7751ebf04584093884320
+    name: ecs-service-broker
+    urls:
+    - https://github.com/chrisjen83/ecs-cf-service-broker/releases/download/ecs-service-broker-0.2.0/ecs-service-broker-0.2.0.tgz
+    version: 0.2.0
+generated: "2020-06-18T15:35:54.250798+10:00"
